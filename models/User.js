@@ -1,6 +1,8 @@
-const mongoose = require('mongoose')
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+console.log(require('dotenv').config());
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -8,6 +10,12 @@ const UserSchema = new mongoose.Schema({
     required: [true, 'Please provide name'],
     maxlength: 50,
     minlength: 3,
+  },
+  lastName: {
+    type: String,
+    trim: true,
+    maxlength: 20,
+    default: 'lastName',
   },
   email: {
     type: String,
@@ -22,6 +30,12 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide password'],
     minlength: 6,
+  },
+  location: {
+    type: String,
+    trim: true,
+    maxlength: 20,
+    default: 'my city',
   },
 })
 
